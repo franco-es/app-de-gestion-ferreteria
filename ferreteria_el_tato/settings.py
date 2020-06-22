@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['localhost', '192.168.1.119']
 INSTALLED_APPS = [
     #mis apps
     'core',
+    'producto',
 
     #django apps
     'django.contrib.admin',
