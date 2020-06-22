@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     #mis apps
     'core',
     'producto',
+    'bootstrap4',
 
     #django apps
     'django.contrib.admin',
