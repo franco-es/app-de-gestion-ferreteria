@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'core',
     'producto',
     'bootstrap4',
+    'widget_tweaks',
 
     #django apps
     'django.contrib.admin',

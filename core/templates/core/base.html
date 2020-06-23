@@ -1,50 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  {% load bootstrap4 %}
-  {% bootstrap_css %}
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ferreteria</title>
-</head>
-<header>
-  <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #e3f2fd;">
-      <a class="navbar-brand" href="#">FERRETERIA EL TATO</a>
-      <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-          aria-expanded="false" aria-label="Toggle navigation"></button>
+  <head>
+    {% load bootstrap4 %} {% bootstrap_css %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ferreteria</title>
+  </head>
+  <header>
+    <nav
+      class="navbar navbar-expand-sm navbar-dark"
+      style="background-color: #1c0797;"
+    >
+      <a class="navbar-brand" href="{% url 'index' %}">FERRETERIA EL TATO</a>
+      <button
+        class="navbar-toggler d-lg-none"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapsibleNavId"
+        aria-controls="collapsibleNavId"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      ></button>
       <div class="collapse navbar-collapse" id="collapsibleNavId">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-              <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                  <div class="dropdown-menu" aria-labelledby="dropdownId">
-                      <a class="dropdown-item" href="#">Action 1</a>
-                      <a class="dropdown-item" href="#">Action 2</a>
-                  </div>
-              </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="text" placeholder="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'index' %}"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contacto</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="dropdownId"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              >Usuarios</a
+            >
+            {% if user.is_authenticated %}
+            <div class="dropdown-menu" aria-labelledby="dropdownId">
+              <a class="dropdown-item" href="#">Cerrar Secion</a>
+              <a class="dropdown-item" href="{% url 'productos' %}">Gestion de Stock</a>
+            </div>
+            {% endif %}
+            <div class="dropdown-menu" aria-labelledby="dropdownId">
+                <a class="dropdown-item" href="#">Iniciar Secion</a>
+                <a class="dropdown-item" href="#">Registrarse</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="text"
+            placeholder="Search"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
       </div>
-  </nav>
-</header>
-<body>
-  <a href="#">Iniciar secion</a>
-  <a href="#">registrate</a>
-  {% block contenido %}
-
-  {% endblock %}
-
-  {% bootstrap_javascript jquery='full' %}
-</body>
-<footer>
-  made with &hearts; by me
-</footer>
+    </nav>
+  </header>
+  <body>
+    {% block contenido %} 
+    {% endblock %} 
+    {% bootstrap_javascript jquery='full' %}
+  </body>
+  <footer style="text-align: center;">
+    made with &hearts; by Franco Estrella
+  </footer>
 </html>
