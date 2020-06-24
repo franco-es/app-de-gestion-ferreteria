@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '192.168.1.119']
 
+LOGIN_REDIRECT_URL ='/'
+LOGOUT_REDIRECT_URL ='/'
 
 # Application definition
 
@@ -36,6 +38,7 @@ INSTALLED_APPS = [
     'producto',
     'bootstrap4',
     'widget_tweaks',
+    'accounts',
 
     #django apps
     'django.contrib.admin',

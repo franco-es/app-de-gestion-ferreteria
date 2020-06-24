@@ -1,0 +1,36 @@
+
+.form-group{
+  align-items: center; 
+  padding-left: 3rem;
+}
+.form-group input{
+  margin-left: 1rem;
+}
+.form-group select, #id_stock, #id_precio, #id_nombre, #id_codigo{
+  width: 200px;
+}
+
+#id_stock{
+  margin-left: 2.9rem;
+}
+#id_precio{
+  margin-left: 2.5rem;
+}
+#id_nombre{
+  margin-left: 1.6rem;
+}
+#id_codigo{
+  margin-left: 2.1rem;
+}
+.contenedor-login{
+  width: 250px;
+  height: 250px;
+  border: 2px solid #bfbfbf;
+  background-color: #d4d4d4;
+  margin: auto;
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

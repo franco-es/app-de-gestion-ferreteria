@@ -34,6 +34,8 @@
       <th>codigo</th>
       <th width="35%">nombre</th>
       <th>precio</th>
+      <th>Precio con IVA</th>
+      <th>Precio de Venta</th>
       <th>stock</th>
       <th>distribuidor</th>
     </tr>
@@ -43,17 +45,22 @@
    <tr>
     <td>{{ producto.codigo}}</td>
     <td>{{ producto.nombre}}</td>
-    <td>{{ producto.precio}}</td>
+    <td>${{ producto.precio}}</td>
+    <td>${{producto.precio_c_iva}}</td>
+    <td>${{producto.precio_venta}}</td>
     <td>{{ producto.stock}}</td>
     <td>{% for distribuidor in producto.distribuidor.all %}{{distribuidor}}</td>{% endfor %}
     <td>
-      <form action="deleteprodcuto/{{producto.id}}" method="post"></form>
-    {% csrf_token %}
-      <div class="btn-group">
-        <a href="detalle/{{producto.id}}" title="Ver" type ="button" class="btn btn-success">Ver</a>
-        <a href="actualizar/{{producto.id}}" title="Editar" type ="button" class="btn btn-primary">Editar</a>
-        <button class="btn btn-danger" onclick="return eliminar();" type="submit">Eliminar</button>
-      </div>
+      <form action="eliminar/{{producto.id}}" method="post">
+        {% csrf_token %}
+        <div class="btn-group">
+          <a href="detalle/{{producto.id}}" title="Ver" type ="button" class="btn btn-success">Ver</a>
+          <a href="actualizar/{{producto.id}}" title="Editar" type ="button" class="btn btn-primary">Editar</a>
+          <button class="btn btn-danger" onclick="return eliminar();" type="submit">Eliminar</button>
+        </div>
+      </form>
+
+      
     </td>
    </tr>
    {% endfor %}
@@ -62,6 +69,14 @@
  {% bootstrap_javascript jquery='full' %}
 
  {% endblock %}
-  
+  <script type+"text/javascript">
+    function eliminar(){
+      var x = confirm("Eliminar Producto?");
+      if(x)
+        return true;
+      else 
+        return false;
+    }
+  </script>
 </body>
   

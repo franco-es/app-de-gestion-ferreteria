@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 from django.views.generic import ListView, DetailView
@@ -21,7 +21,7 @@ class ProductosDetalle(DetailView):
 class ProductoCrear(CreateView):
   model = productos
   form = productos
-  fields = "__all__"
+  fields = ['codigo', 'nombre', 'precio', 'remarcado',  'stock', 'distribuidor']
   success_message = 'Producto creado correctamente!'
 
   def get_success_url(self):
@@ -44,4 +44,6 @@ class ProductosEliminar(SuccessMessageMixin, DeleteView):
   def get_success_message(self):
     success_message = 'Producto eliminado correctamente'
     messages.success(self.request, (success_message))
+    
+  def get_success_url(self):
     return reverse('productos')

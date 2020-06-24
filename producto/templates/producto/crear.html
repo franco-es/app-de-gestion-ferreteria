@@ -1,15 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <h1>
-    pagina de crear productos
-    <a href="{% url 'productos' %}">atras</a>
+{% extends 'core/base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% load widget_tweaks %}
+{% block contenido %}
 
-  </h1>
-</body>
-</html>
+<main role="main">
+  <div class="table-responsive">
+    <nav aria-label="breadcrumb mb-3">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../../productos/">Productos</a></li>
+          <li class="breadcrumb-item active">Crear</li>
+      </ol>
+    </nav>
+    <div class="formulario" align = "left">
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+          {{ form.as_p }}
+        <button type="submit" class="btn btn-success" value="Save">Aceptar</button>
+        <a href="{% url 'productos' %}" class="btn btn-danger">Cancelar</a>
+      </form>
+    </div>
+  </div>
+</main>
+{% url 'index' %}
+{% bootstrap_javascript jquery='full' %}
+{% endblock %}
