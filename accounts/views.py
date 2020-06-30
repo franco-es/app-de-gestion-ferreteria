@@ -1,4 +1,7 @@
 from django.shortcuts import render, redirect
+
+from django.contrib.auth.forms import UserCreationForm
+
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as do_login
@@ -25,7 +28,13 @@ def login(request):
 
 
 def register(request):
-  return render(request, 'registration/registro.html')
+  form = UserCreationForm()
+  if request.method == 'POST':
+    form = UserCreationForm(data =  request.POST)
+    if form.is_valid():
+      user = form.save()
+      return redirect('productos')
+  return render(request, 'registration/registro.html', {'form':form})
 
 
 def logout(request):

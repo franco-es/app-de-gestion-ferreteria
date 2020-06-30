@@ -35,27 +35,18 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Contacto</a>
           </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="dropdownId"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              >Usuarios</a
-            >
             {% if user.is_authenticated %}
-            <div class="dropdown-menu" aria-labelledby="dropdownId">
-              <a class="dropdown-item" href="{% url 'logout' %}">Cerrar Secion</a>
-              <a class="dropdown-item" href="{% url 'productos' %}">Gestion de Stock</a>
-            </div>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'productos' %}">Gestion de Stock</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Cerrar Secion</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Iniciar Secion</a>
+            </li>
             {% endif %}
-            <div class="dropdown-menu" aria-labelledby="dropdownId">
-                <a class="dropdown-item" href="{% url 'login' %}">Iniciar Secion</a>
-                <a class="dropdown-item" href="{% url 'registro' %}">Registrarse</a>
-            </div>
-          </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input
